@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section id="contact" class="contact-section">
+    <h2 class="section-title"> 📌 Contacto 📬</h2>
+    <p class="section-subtitle">¿Quieres trabajar conmigo o tienes alguna consulta? ¡Escríbeme! 🚀</p>
+
+    <form action="/send-message/" method="post" class="contact-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" name="name" id="name" required placeholder="Tu nombre">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" name="email" id="email" required placeholder="tucorreo@ejemplo.com">
+        </div>
+
+        <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea name="message" id="message" rows="6" required placeholder="Escribe tu mensaje aquí..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-button">Enviar Mensaje 🚀</button>
+    </form>
+
+    <div class="contact-links">
+        <a href="https://www.linkedin.com/in/lzelis/" target="_blank" class="contact-link linkedin-link">
+            <img src="{% static 'images/linkedin-icon.png' %}" alt="LinkedIn" class="icon"> Mi LinkedIn
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=34697982168&text=Hola%2C%20Vi%20su%20CV%20y%20quisiera%20contactarme%20con%20usted." target="_blank" class="contact-link whatsapp-link">
+            <img src="{% static 'images/whatsapp-icon.png' %}" alt="WhatsApp" class="icon"> Mi WhatsApp
+        </a>
+    </div>
+</section>
+{% endblock %}
