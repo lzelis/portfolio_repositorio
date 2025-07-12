@@ -3,7 +3,6 @@ services:
     name: leopoldozelis
     env: python
     plan: free
-    rootDirectory: portfolio_web
     buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
     startCommand: "gunicorn portfolio.wsgi --bind 0.0.0.0:$PORT"
     envVars:
