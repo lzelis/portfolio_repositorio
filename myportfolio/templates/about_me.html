@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section id="about" class="about-me">
+    <div class="avatar-container">
+        <img src="{% static 'images/tu-avatar2.jpg' %}" alt="Mi Avatar" class="avatar">
+    </div>
+    <div>
+        <h1>Hola, soy Leopoldo Zelis 👋</h1>
+        <p>Licenciado en Administración de Empresas, inmerso en el apasionante mundo de los datos, fan del marketing y en búsqueda de un crecimiento y progreso constante de manera innovadora y creativa. ¡Bienvenidos!</p>
+    </div>
+</section>
+
+<section id="career" class="career-path">
+    <h2>Mi Trayectoria 💻</h2>
+
+    <div class="timeline-line">
+        <div class="rocket" id="rocket">🚀</div>
+    </div>
+
+    <div class="timeline-container">
+        {% for career in careers %}
+            <div class="timeline-point" data-index="{{ forloop.counter0 }}">
+                <div class="year-label">{{ career.year }}</div>
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>{{ career.year }} - {{ career.job_title }}</h3>
+                            <p>{{ career.company }}</p>
+                            {% if career.logo %}
+                                <img src="{{ career.logo.url }}" alt="{{ career.company }} logo" class="company-logo">
+                            {% endif %}
+                        </div>
+                        <div class="card-back">
+                            <h3>{{ career.job_title }}</h3>
+                            <div class="card-description">
+                                <p>{{ career.description|linebreaksbr }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/timeline.js' %}"></script>
+{% endblock %}

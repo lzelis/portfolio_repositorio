@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section id="experiencia-academica" class="projects-section">
+    <h2 class="section-title">Mi Formación Académica 🎓</h2>
+    <p class="section-subtitle">Aquí comparto algunas de mis experiencias académicas más relevantes.</p>
+    <div class="projects-grid">
+        {% for formacion in formaciones %}
+            <div class="project-card">
+                <div class="project-image-container">
+                    {% if formacion.image %}
+                        <img src="{{ formacion.image.url }}" alt="{{ formacion.titulo }}" class="project-image">
+                    {% else %}
+                        <img src="{% static 'images/placeholder.png' %}" alt="Imagen no disponible" class="project-image">
+                    {% endif %}
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">{{ formacion.titulo }}</h3>
+                    <p class="project-description">
+                        <strong>{{ formacion.institucion }}</strong><br>
+                        {{ formacion.tipo }} | {{ formacion.modalidad }}
+                    </p>
+                    <p class="project-dates">
+                        {{ formacion.fecha_inicio|date:"M Y" }} –
+                        {% if formacion.fecha_fin %}
+                            {{ formacion.fecha_fin|date:"M Y" }}
+                        {% else %}
+                            Actualidad
+                        {% endif %}
+                    </p>
+                    <p class="project-description">{{ formacion.descripcion }}</p>
+                    {% if formacion.enlace %}
+                    <a href="{{ formacion.enlace }}" target="_blank" class="project-link">Ver más</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

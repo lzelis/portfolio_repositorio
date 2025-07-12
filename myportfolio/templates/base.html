@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portfolio</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="{% url 'about_me' %}" class="nav-link">Sobre mí</a></li>
+                <li><a href="{% url 'projects' %}" class="nav-link">Proyectos</a></li>
+                <li><a href="{% url 'experiencia_academica' %}" class="nav-link">Formación</a></li>  <!-- NUEVO ENLACE -->
+                <li><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
+                <li><a href="{% url 'contact' %}" class="nav-link">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Mi Portfolio. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Aquí va la inclusión del archivo JS -->
+    {% block extra_js %}
+    <script src="{% static 'js/timeline.js' %}"></script>
+    {% endblock %}
+</body>
+</html>

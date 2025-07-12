@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section id="projects" class="projects-section">
+    <h2 class="section-title">Mis Proyectos 💻📊💡</h2>
+    <p class="section-subtitle">Aquí comparto algunos de mis proyectos.</p>
+    <div class="projects-grid">
+        {% for project in projects %}
+            <div class="project-card">
+                <div class="project-image-container">
+                    {% if project.image %}
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image">
+                    {% else %}
+                        <img src="{% static 'images/placeholder.png' %}" alt="Imagen no disponible" class="project-image">
+                    {% endif %}
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-description">{{ project.description }}</p>
+                    <a href="{{ project.link }}" target="_blank" class="project-link">Ver Proyecto 🚀</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

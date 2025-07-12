@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section id="message-sent" class="contact-section">
+    <h2 class="section-title">✅ ¡Mensaje Enviado!</h2>
+    <p class="section-subtitle">Gracias por contactarte. Te responderé lo antes posible. 📬</p>
+
+    <div class="confirmation-emoji">
+        <span class="emoji-large">📩</span>
+    </div>
+
+    <div class="return-home">
+        <a href="{% url 'about_me' %}" class="submit-button">Volver al Inicio</a>
+    </div>
+</section>
+{% endblock %}

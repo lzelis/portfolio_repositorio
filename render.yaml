@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: leopoldozelis
+    env: python
+    plan: free
+    rootDirectory: portfolio_web
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
+    startCommand: "gunicorn portfolio.wsgi --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: portfolio.settings
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: SECRET_KEY
+        value: "django-insecure-5anxjj6wtt+8-h7$uz1xcu_!@59@a)d(sa4hy#m0vm+f^$&1@="
+      - key: EMAIL_HOST_USER
+        value: "leopoldozelis@gmail.com"
+      - key: EMAIL_HOST_PASSWORD
+        value: "bktb boqx zghe csbg"
+      - key: CONTACT_EMAIL
+        value: "leopoldozelis@gmail.com"
+    autoDeploy: true
