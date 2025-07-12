@@ -23,7 +23,7 @@ services:
       - key: CLOUDINARY_CLOUD_NAME
         value: denwz0b90
       - key: CLOUDINARY_API_KEY
-        value: "125235858281449"
+        value: "189961541621674"
       - key: CLOUDINARY_API_SECRET
-        value: "mXbwBcbk6xLoD3THtHtMwWT0sfo"
+        value: "FLJz9LLdyvhsrkqz8Tx_ySHB-08"
     autoDeploy: true

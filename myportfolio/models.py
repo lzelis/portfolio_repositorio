@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 class Project(models.Model):
     title = models.CharField(max_length=100)
@@ -15,7 +16,7 @@ class Career(models.Model):
     company = models.CharField(max_length=100)
     description = models.TextField()
     position = models.FloatField(default=0.0)  # Este es el campo que usas para la posición en la línea de tiempo
-    logo = models.ImageField(upload_to='logos/', blank=True, null=True)  # 🔹 NUEVO CAMPO
+    logo = CloudinaryField('logo', blank=True, null=True)  # Cambiado aquí
     def __str__(self):
         return f"{self.year} - {self.job_title} en {self.company}"
 
