@@ -20,4 +20,10 @@ services:
         value: "bktb boqx zghe csbg"
       - key: CONTACT_EMAIL
         value: "leopoldozelis@gmail.com"
+      - key: CLOUDINARY_CLOUD_NAME
+        value: denwz0b90
+      - key: CLOUDINARY_API_KEY
+        value: "125235858281449"
+      - key: CLOUDINARY_API_SECRET
+        value: "mXbwBcbk6xLoD3THtHtMwWT0sfo"
     autoDeploy: true

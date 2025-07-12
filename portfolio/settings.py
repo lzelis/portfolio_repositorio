@@ -12,12 +12,15 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 # MEDIA (archivos subidos por usuarios)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # SECRET_KEY y DEBUG via variables de entorno para seguridad
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-5anxjj6wtt+8-h7$uz1xcu_!@59@a)d(sa4hy#m0vm+f^$&1@=')
@@ -36,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myportfolio',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -94,6 +99,17 @@ STATICFILES_DIRS = [BASE_DIR / 'myportfolio' / 'static']  # Tu carpeta de estát
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')      # Para collectstatic en deploy
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Archivos multimedia
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME', 'denwz0b90'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+    'SECURE': True,
+}
 
 # Configuración email desde variables de entorno para seguridad
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
