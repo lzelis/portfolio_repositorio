@@ -5,7 +5,8 @@ class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     link = models.URLField()
-    image = models.ImageField(upload_to='projects/', null=True, blank=True)  # Aquí se especifica el campo para subir imágenes
+    # image = models.ImageField(upload_to='projects/', null=True, blank=True)  # Aquí se especifica el campo para subir imágenes
+    image = CloudinaryField('projects/', blank=True, null=True)  # Cambiado aquí
 
     def __str__(self):
         return self.title
@@ -39,7 +40,8 @@ class AcademicExperience(models.Model):
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField(null=True, blank=True)
     descripcion = models.TextField(blank=True)
-    image = models.ImageField(upload_to='formaciones/', null=True, blank=True)  # Aquí se especifica el campo para subir imágenes
+    # image = models.ImageField(upload_to='formaciones/', null=True, blank=True)  # Aquí se especifica el campo para subir imágenes
+    image = CloudinaryField('formaciones/', blank=True, null=True)  # Cambiado aquí
     orden = models.PositiveIntegerField(default=0)  # para ordenar como quieras
     enlace = models.URLField(blank=True, null=True)  # 👈 nuevo campo
 
